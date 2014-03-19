@@ -1,0 +1,41 @@
+<h1>Listing wdi_prospects</h1>
+
+<table>
+  <tr>
+    <th>E i n</th>
+    <th>Name</th>
+    <th>In care of name</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip code</th>
+    <th>Asset amount</th>
+    <th>Income amount</th>
+    <th>Form 990 revenue amount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @wdi_prospects.each do |wdi_prospect| %>
+  <tr>
+    <td><%= wdi_prospect.e_i_n %></td>
+    <td><%= wdi_prospect.name %></td>
+    <td><%= wdi_prospect.in_care_of_name %></td>
+    <td><%= wdi_prospect.address %></td>
+    <td><%= wdi_prospect.city %></td>
+    <td><%= wdi_prospect.state %></td>
+    <td><%= wdi_prospect.zip_code %></td>
+    <td><%= wdi_prospect.asset_amount %></td>
+    <td><%= wdi_prospect.income_amount %></td>
+    <td><%= wdi_prospect.form_990_revenue_amount %></td>
+    <td><%= link_to 'Show', wdi_prospect %></td>
+    <td><%= link_to 'Edit', edit_wdi_prospect_path(wdi_prospect) %></td>
+    <td><%= link_to 'Destroy', wdi_prospect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Wdi prospect', new_wdi_prospect_path %>

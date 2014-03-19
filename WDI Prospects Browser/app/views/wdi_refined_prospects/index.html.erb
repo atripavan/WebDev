@@ -1,0 +1,45 @@
+<h1>Listing wdi_refined_prospects</h1>
+
+<table>
+  <tr>
+    <th>E i n</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Income amount</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Title</th>
+    <th>Has donation button</th>
+    <th>Website</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @wdi_refined_prospects.each do |wdi_refined_prospect| %>
+  <tr>
+    <td><%= wdi_refined_prospect.e_i_n %></td>
+    <td><%= wdi_refined_prospect.name %></td>
+    <td><%= wdi_refined_prospect.address %></td>
+    <td><%= wdi_refined_prospect.city %></td>
+    <td><%= wdi_refined_prospect.state %></td>
+    <td><%= wdi_refined_prospect.income_amount %></td>
+    <td><%= wdi_refined_prospect.first_name %></td>
+    <td><%= wdi_refined_prospect.last_name %></td>
+    <td><%= wdi_refined_prospect.email %></td>
+    <td><%= wdi_refined_prospect.title %></td>
+    <td><%= wdi_refined_prospect.has_donation_button %></td>
+    <td><%= wdi_refined_prospect.website %></td>
+    <td><%= link_to 'Show', wdi_refined_prospect %></td>
+    <td><%= link_to 'Edit', edit_wdi_refined_prospect_path(wdi_refined_prospect) %></td>
+    <td><%= link_to 'Destroy', wdi_refined_prospect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Wdi refined prospect', new_wdi_refined_prospect_path %>

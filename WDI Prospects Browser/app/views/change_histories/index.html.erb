@@ -1,0 +1,26 @@
+<div class="chng-his-div">
+	<h1>Change History</h1>
+	
+	<table class="chng-his-tab">
+	  <tr>
+	    <th>Username</th>
+	    <th>Email</th>
+	    <th>Change</th>
+	    <th>Time</th>
+	    <th style="width: 50px;"></th>
+	  </tr>
+	
+	<% @change_histories.each do |change_history| %>
+	  <tr>
+	    <td><%= change_history.username %></td>
+	    <td><%= change_history.email %></td>
+	    <td><%= simple_format(change_history.change) %></td>
+	    <td><%= change_history.created_at %></td>
+	    <!--td><%= link_to 'Show', change_history %></td-->
+	    <!--td><%= link_to 'Edit', edit_change_history_path(change_history) %></td-->
+	    <td><%= link_to 'Destroy', change_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  </tr>
+	<% end %>
+	</table>
+	<br />
+</div>

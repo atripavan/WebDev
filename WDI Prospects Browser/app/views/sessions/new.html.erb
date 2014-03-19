@@ -1,0 +1,33 @@
+<%= form_tag sessions_path do %>
+<div class="center-div">
+	<table class="login-tab">
+		<tr>
+			<td class="hdr-td"><h1>Log in</h1></td>
+		</tr>
+		<tr>
+			<td class="label-td">Email:</td>
+		</tr>
+		<tr>
+			<td><%= text_field_tag :email, params[:email] %></td>
+		</tr>
+		<tr>
+			<td class="label-td">Password:</td>
+		</tr>
+		<tr>
+			<td><%= password_field_tag :password %></td>
+		</tr>
+		<tr>
+			<td style="color:red;"> <% flash.each do |name, msg| %>
+			<%= content_tag :div, msg, :id => "flash_#{name}" %>
+			<% end %></td>
+		</tr>
+		<tr>
+			<td align="center"><%= submit_tag "Log in" %></td>
+		</tr>
+		<tr>
+			<td class="label-td"><%= link_to 'New User?', sign_up_path %>&nbsp;
+				&nbsp;&nbsp;<%= link_to 'Forgot Password?', new_password_reset_path %></td>
+		</tr>
+	</table>
+	<% end %>
+</div>

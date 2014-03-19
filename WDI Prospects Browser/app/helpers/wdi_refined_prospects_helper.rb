@@ -1,0 +1,2 @@
+module WdiRefinedProspectsHelper
+end

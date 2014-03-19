@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  e_i_n: MyString
+  name: MyString
+  in_care_of_name: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip_code: MyString
+  asset_amount: 1.5
+  income_amount: 1.5
+  form_990_revenue_amount: 1.5
+  ntee_code: MyString
+  sort_or_secondary_name: MyString
+
+two:
+  e_i_n: MyString
+  name: MyString
+  in_care_of_name: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip_code: MyString
+  asset_amount: 1.5
+  income_amount: 1.5
+  form_990_revenue_amount: 1.5
+  ntee_code: MyString
+  sort_or_secondary_name: MyString

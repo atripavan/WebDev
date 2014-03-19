@@ -1,0 +1,28 @@
+<div class="center-div">
+
+	<h1>Upload CSV File</h1>
+
+	<p id="notice">
+		<b>Select CSV file containing prospects:</b>
+	</p>
+	<%=form_tag import_path, multipart: true do %>
+	<%= file_field_tag :file %>
+	<br />
+	<br />
+	<input style="width:120px;" type="submit" value="Import Records" name="commit" />
+	<% end %>
+	<br />
+	<p id="notice">
+		<i><b><u><%= notice %></u></b></i>
+	</p>
+	<br />
+	<p id="notice">
+		<b>Select CSV file containing refined prospects:</b>
+	</p>
+	<%=form_tag import_to_refined_path, multipart: true do %>
+	<%= file_field_tag :file %>
+	<br />
+	<br />
+	<input style="width:120px;" type="submit" value="Import Records" name="commit" />
+	<% end %>
+</div>

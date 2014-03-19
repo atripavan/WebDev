@@ -1,0 +1,292 @@
+<script>
+	var curUrl ="";
+	$(document).ready(function() 
+    { 
+        $("#prospResTab").tablesorter(); 
+        $("#prospResTab").tablesorter({ headers: { 0: { sorter: false} } }); 
+    	curUrl = $(location).attr('href');
+    }); 
+    
+	function exportToXl() {
+		var excelHtml = "<table><tr><th>E.I.N</th><th>Name</th><th>Address</th><th>City</th>"
+					+"<th>State</th><th>Income Amount</th><th>First Name</th><th>Last Name</th>"
+				+"<th>Email</th><th>Title</th><th>Has Donation Button</th><th>Website</th></tr>";
+		
+		$(".prosp-res-tab tr:has(input:checked)").each(function(){
+			excelHtml = excelHtml + "<tr>";
+			var count =1;
+			$(this).find("td:not(#xlExcld)").each(function(){
+				if(count==2 || count==3 || count==4 || count==10)
+				{
+					excelHtml = excelHtml + "<td>=PROPER(\"" + $(this).html() + "\")</td>";
+				}
+				else
+				{
+					excelHtml = excelHtml + "<td>" + $(this).html() + "</td>";
+				}
+				count=count+1;
+			});			
+			excelHtml = excelHtml + "</tr>";
+			
+		});			
+		
+		excelHtml = excelHtml + "</table>";
+		
+	    window.open('data:application/vnd.ms-excel,' + encodeURIComponent(excelHtml + "</table>"));
+	}
+	var isChecked = 0;
+	function chkUnchkAll() {
+		if ($(".mstrDelChkBox").is(":checked")) {
+			$('.delChkBox').attr('checked', 'checked');
+		} else {
+			$('.delChkBox').removeAttr('checked');
+		}
+	}
+
+	function delProspects() {
+		var delProspectIds = "";
+		var chkBoxes = $("input:checked");
+		i = chkBoxes.length;
+		if (i == 0) {
+			alert("Please select a Prospect to delete");
+		} 
+		else
+		{
+			while (i--) {
+				delProspectIds = delProspectIds + chkBoxes[i].id + "$";
+			}
+			var cnfrm = confirm("Are you sure you want to delete "+chkBoxes.length+" prospects?");
+			if (cnfrm)
+			{
+				$.ajax({
+					type : 'POST',
+					beforeSend: function(xhr) { xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')) },
+					url : '/del_refined_prospects',
+					data : {
+						'delProspectIds' : delProspectIds,
+					},
+					success : function() {
+						alert(chkBoxes.length + " Prospects deleted successfully!");
+						window.location.href = curUrl;
+					}
+				});				
+			}
+		}
+	}
+
+</script>
+<div align="center" style="padding:5px;height:520px; width:1200px;" >
+	<%= form_tag search_refined_prospects_path, :method => 'get' do %>
+	<table class="prosp-master-tab" style="border:none;">
+		<tr>
+			<td style="padding:0px;">
+			<table class="srch-fields-tab">
+				<tr>
+					<td><%= label :name, "Name: " %></td>
+				</tr>
+				<tr>
+					<td><%= text_field_tag :srchName, params[:srchName] %></td>
+				</tr>
+				<tr>
+					<td><%= label :e_i_n, "E I N: " %></td>
+				</tr>
+				<tr>
+					<td><%= text_field_tag :srchEin, params[:srchEin] %></td>
+				</tr>
+				<tr>
+					<td><%= label :address, "Address: " %></td>
+				</tr>
+				<tr>
+					<td><%= text_field_tag :srchAddr, params[:srchAddr] %></td>
+				</tr>
+				<tr>
+					<td><%= label :city, "City: " %></td>
+				</tr>
+				<tr>
+					<td><%= text_field_tag :srchCity, params[:srchCity] %></td>
+				</tr>
+				<tr>
+					<td><%= label :state, "State: " %></td>
+				</tr>
+				<tr>
+					<td>
+					<select id="srchState" name="srchState" >
+						<option selected="selected" value=""></option>
+						<option value="AL">AL</option>
+						<option value="AK">AK</option>
+						<option value="AZ">AZ</option>
+						<option value="AR">AR</option>
+						<option value="CA">CA</option>
+						<option value="CO">CO</option>
+						<option value="CT">CT</option>
+						<option value="DE">DE</option>
+						<option value="DC">DC</option>
+						<option value="FL">FL</option>
+						<option value="GA">GA</option>
+						<option value="HI">HI</option>
+						<option value="ID">ID</option>
+						<option value="IL">IL</option>
+						<option value="IN">IN</option>
+						<option value="IA">IA</option>
+						<option value="KS">KS</option>
+						<option value="KY">KY</option>
+						<option value="LA">LA</option>
+						<option value="ME">ME</option>
+						<option value="MD">MD</option>
+						<option value="MA">MA</option>
+						<option value="MI">MI</option>
+						<option value="MN">MN</option>
+						<option value="MS">MS</option>
+						<option value="MO">MO</option>
+						<option value="MT">MT</option>
+						<option value="NE">NE</option>
+						<option value="NV">NV</option>
+						<option value="NH">NH</option>
+						<option value="NJ">NJ</option>
+						<option value="NM">NM</option>
+						<option value="NY">NY</option>
+						<option value="NC">NC</option>
+						<option value="ND">ND</option>
+						<option value="OH">OH</option>
+						<option value="OK">OK</option>
+						<option value="OR">OR</option>
+						<option value="PA">PA</option>
+						<option value="RI">RI</option>
+						<option value="SC">SC</option>
+						<option value="SD">SD</option>
+						<option value="TN">TN</option>
+						<option value="TX">TX</option>
+						<option value="UT">UT</option>
+						<option value="VT">VT</option>
+						<option value="VA">VA</option>
+						<option value="WA">WA</option>
+						<option value="WV">WV</option>
+						<option value="WI">WI</option>
+						<option value="WY">WY</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><%= label :income_amount, "Income Amount: " %><i style="font-size: 10px;">(e.g., >100)</i></td>
+				</tr>
+				<tr>
+					<td><%= text_field_tag :srchIncAmnt, params[:srchIncAmnt] %></td>
+				</tr>
+				<tr>
+					<td><%= label :first_name, "First Name: " %></td>
+				</tr>
+				<tr>
+					<td><%= text_field_tag :srchFirstName, params[:srchFirstName] %></td>
+				</tr>
+				<tr>
+					<td><%= label :last_name, "Last Name: " %></td>
+				</tr>
+				<tr>
+					<td><%= text_field_tag :srchLastName, params[:srchLastName] %></td>
+				</tr>
+				<tr>
+					<td><%= label :email, "Email: " %></td>
+				</tr>
+				<tr>
+					<td><%= text_field_tag :srchEmail, params[:srchEmail] %></td>
+				</tr>
+				<tr>
+					<td><%= label :title, "Title: " %></td>
+				</tr>
+				<tr>
+					<td><%= text_field_tag :srchTitle, params[:srchTitle] %></td>
+				</tr>
+				<tr>
+					<td><%= label :has_donation_button, "Has Donation Button: " %></td>
+				</tr>
+				<tr>
+					<td>
+						<select id="srchHasDonBut" name="srchHasDonBut" >
+							<option selected="selected" value=""></option>
+							<option value="1">True</option>
+							<option value="0">False</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><%= label :website, "Website: " %></td>
+				</tr>
+				<tr>
+					<td><%= text_field_tag :srchWebsite, params[:srchWebsite] %></td>
+				</tr>
+				<tr>
+					<td><%= label :limit_records, "Limit No. of Records to: " %></td>
+				</tr>
+				<tr>
+					<td><%= text_field_tag :recLimit, params[:recLimit] %></td>
+				</tr>
+				<tr>
+					<td>&nbsp;&nbsp;<%= submit_tag "Search", :name => nil %></td>
+				</tr>
+			</table></td>
+			<td style="padding-top:0px;">
+			<table style="border:none;">
+				<tr>
+					<td>
+					<div class="scrollContent_2">
+						<table id="prospResTab" class="prosp-res-tab">
+							<thead>
+							<tr class="prosp-res-hdr">
+								<th id="xlExcld">
+								<input class="mstrDelChkBox" type="checkbox" onclick="chkUnchkAll();" >
+								</th>
+								<th>E.I.N</th>
+								<th>Name</th>
+								<th>Address</th>
+								<th>City</th>
+								<th>State</th>
+								<th>Income amount</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Email</th>
+								<th>Title</th>
+								<th>Donation Button</th>
+								<th>Website</th>
+								<th id="xlExcld">-</th>
+								<th id="xlExcld">-</th>
+							</tr>
+							</thead>
+							<tbody>
+							<% if @wdi_refined_prospects %>
+							<% @wdi_refined_prospects.each do |wdi_refined_prospect| %>
+							<tr>
+								<td id="xlExcld">
+								<input class="delChkBox" type="checkbox" id="<%= wdi_refined_prospect.id %>" >
+								</td>
+								<td><%= wdi_refined_prospect.e_i_n %></td>
+								<td><%= wdi_refined_prospect.name %></td>
+								<td><%= wdi_refined_prospect.address %></td>
+								<td><%= wdi_refined_prospect.city %></td>
+								<td><%= wdi_refined_prospect.state %></td>
+								<td>$<%= number_with_delimiter(wdi_refined_prospect.income_amount, :delimiter => ',') %></td>
+								<td><%= wdi_refined_prospect.first_name %></td>
+								<td><%= wdi_refined_prospect.last_name %></td>
+								<td><%= wdi_refined_prospect.email %></td>
+								<td><%= wdi_refined_prospect.title %></td>
+								<td><%= wdi_refined_prospect.has_donation_button %></td>
+								<td><%= wdi_refined_prospect.website %></td>
+								<td id="xlExcld"><%= link_to 'Edit', edit_wdi_refined_prospect_path(wdi_refined_prospect) %></td>
+								<td id="xlExcld"><%= link_to 'Destroy', wdi_refined_prospect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+							</tr>
+							<% end %>
+							<% end %>
+							</tbody>
+						</table>
+					</div></td>
+				</tr>
+				<tr>
+					<td style="border: 1px solid #7EBD64;border-left:none;">&nbsp;&nbsp;<%= button_to_function "Delete", 'delProspects();', :id => "delBtn" %>
+						&nbsp;&nbsp;<input style="width:120px;" type="button" onclick="exportToXl();" value="Export to Excel">
+					</td>
+				</tr>
+
+			</table></td>
+		</tr>
+	</table>
+	<% end %>
+</div>
+	

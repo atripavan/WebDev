@@ -1,0 +1,141 @@
+// Place all the styles related to the Wdi_prospects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.prosp-master-tab td{
+  border-collapse: collapse;
+  border: none;
+}
+.prosp-res-tab{
+    width:1110px;
+}
+.prosp-res-tab td{
+  padding:4px;
+  border:1px solid #7EBD64;
+  border-collapse: collapse;
+}
+.prosp-res-tab tr:not(.prosp-res-hdr):hover{
+  background-color: #7EBD64;
+}
+th:hover{
+  background-color: #99CC00;
+  cursor: pointer;
+}
+.srch-fields-tab{
+  width:120px;
+  height:572px;
+}
+.srch-fields-tab td{
+  padding:0px;
+  border:1px solid #7EBD64;
+  border-collapse: collapse;
+}
+.srch-fields-tab label{
+  padding:2px;
+  font-size:13px;
+  font-weight:bold;
+}
+.scrollContent {
+  height:540px;
+  overflow-y:scroll;
+}
+
+input[type=text], input[type=password]{
+  width: 162px;
+}
+input[type=button], input[type=submit]{
+  width: 70px;
+  height: 26px;
+  background: #7EBD64;
+  border-radius: 5px 5px 5px 5px;
+  border:none;
+  cursor: hand;
+  
+}
+
+//Create Prospect Page
+
+h1{
+  text-align:center;
+  font-family: verdana,helvetica,arial,sans-serif;
+  font-size: 30px;
+  color:#7EBD64;
+}
+table.wdi-prospect-tab,table.wdi-prospect-tab td,table.wdi-prospect-tab th{
+    border:none;
+}
+table.wdi-prospect-tab{
+  width:350px;
+}
+
+table.wdi-prospect-tab td{
+  padding:4px;
+  height:25px;
+  text-align:center;
+}
+.wdi-prospect-tab input[type=submit]{
+  width: 325px;
+}
+.wdi-prospect-tab .label-td{
+  color:#7EBD64;
+  padding:4px;
+  height:25px;
+  text-align:left;
+  font-size:15px;
+  font-weight: bold;
+  font-family: verdana,helvetica,arial,sans-serif;
+}
+
+
+
+
+
+
+
+
+//Not used
+.chkBoxWidth{
+  width:2%;
+}
+.einWidth{
+  width:6%;
+}
+.nameWidth{
+  width:20%;
+}
+.inCareOfNameWidth{
+  width:15%;
+}
+.addrWidth{
+  width:20%;
+}
+.cityWidth{
+  width:12%;
+}
+.stateWidth{
+  width:2%;
+}
+.zipCodeWidth{
+  width:8%;
+}
+.astAmntWidth{
+  width:8%;
+}
+.incAmntWidth{
+  width:8%;
+}
+.form990AmntWidth{
+  width:8%;
+}
+
+.showWidth{
+  width:2%;
+}
+
+.editWidth{
+  width:2%;
+}
+
+.destroyWidth{
+  width:2%;
+}

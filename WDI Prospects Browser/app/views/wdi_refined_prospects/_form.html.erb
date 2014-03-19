@@ -1,0 +1,67 @@
+<%= form_for(@wdi_refined_prospect) do |f| %>
+  <% if @wdi_refined_prospect.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wdi_refined_prospect.errors.count, "error") %> prohibited this wdi_prospect from being saved:</h2>
+
+      <ul>
+      <% @wdi_refined_prospect.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<table class="wdi-prospect-tab">
+		<tr>
+			<td class="label-td"><%= f.label :e_i_n %></td>
+			<td><%= f.text_field :e_i_n %></td>
+		</tr>
+		<tr>
+			<td class="label-td"><%= f.label :name %></td>
+			<td><%= f.text_field :name %></td>
+		</tr>
+		<tr>
+			<td class="label-td"><%= f.label :address %></td>
+			<td><%= f.text_field :address %></td>
+		</tr>
+		<tr>
+			<td class="label-td"><%= f.label :city %></td>
+			<td><%= f.text_field :city %></td>
+		</tr>
+		<tr>
+			<td class="label-td"><%= f.label :state %></td>
+			<td><%= f.text_field :state %></td>
+		</tr>
+		<tr>
+			<td class="label-td"><%= f.label :income_amount %></td>
+			<td><%= f.text_field :income_amount %></td>
+		</tr>
+		<tr>
+			<td class="label-td"><%= f.label :first_name %></td>
+			<td><%= f.text_field :first_name %></td>
+		</tr>
+		<tr>
+			<td class="label-td"><%= f.label :last_name %></td>
+			<td><%= f.text_field :last_name %></td>
+		</tr>
+		<tr>
+			<td class="label-td"><%= f.label :email %></td>
+			<td><%= f.text_field :email %></td>
+		</tr>
+		<tr>
+			<td class="label-td"><%= f.label :title %></td>
+			<td><%= f.text_field :title %></td>
+		</tr>
+		<tr>
+			<td class="label-td"><%= f.label :has_donation_button %></td>
+			<td><%= f.text_field :has_donation_button %></td>
+		</tr>
+		<tr>
+			<td class="label-td"><%= f.label :website %></td>
+			<td><%= f.text_field :website %></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><%= f.submit %></td>
+		</tr>
+	</table>
+<% end %>

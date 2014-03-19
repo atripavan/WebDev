@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>WdiProspectsBrowser</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body style="background-color: #F6F4F0;">
+	<table class="navtable">
+		<tr>
+			<td class="logotd">
+				<a href="http://wedid.it">
+					<img src="/images/logo_tree.png"> 
+					<img src="/images/logo.png"> 
+				</a>
+			</td>
+			<td style="text-align:center; vertical-align: center;border-right: none;">
+				<table style="border-style: none; width:620px; height:100%;">
+					<tr>
+						<td class="navlinkstd">
+							<a href="/uploadfile">Upload CSV</a>
+						</td>
+						<td class="navlinkstd">	
+							<a href="/wdi_prospects/new">Add Prospect</a>
+						</td>
+						<td class="navlinkstd">	
+							<a href="/search">Search Prospects</a>
+						</td>
+						<td class="navlinkstd">	
+							<a href="/search_refined_prospects">Search Refined Prospects</a>
+						</td>
+						<td class="navlinkstd">	
+							<a href="/change_histories">Change History</a>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td class="sessiontd">						
+				<% if current_user %>
+				Welcome <%= current_user.name %>!&nbsp;&nbsp;
+				<a class="navlinks" href="/log_out">Log Out</a>
+				<% end %>
+			</td>
+		</tr>
+	</table>
+	
+	<%= yield %>
+
+	</body>
+</html>
