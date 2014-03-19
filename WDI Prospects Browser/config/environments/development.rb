@@ -44,8 +44,8 @@ WdiProspectsBrowser::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 465,
     :domain               => "gmail.com",
-    :user_name            => "atripavan@gmail.com",
-    :password             => "priyagoogle123",
+    :user_name            => "pavanatri@gmail.com",
+    :password             => "fakegoogle",
     :authentication       => :plain,
     :tls => true
   }
